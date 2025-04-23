@@ -6,7 +6,6 @@ import torch.nn as nn
 import joblib
 from pathlib import Path
 import torch
-import shap
 import matplotlib.pyplot as plt
 import xgboost as xgb
 
