@@ -11,11 +11,12 @@ import xgboost as xgb
 
 st.set_page_config(layout="wide")
 plt.rcParams["font.sans-serif"] = ["SimHei", "Times New Roman"]
-plt.rcParams['axes.titlesize'] = 16  # 图标题字号
-plt.rcParams['axes.labelsize'] = 14  # x/y轴标签字号
-plt.rcParams['xtick.labelsize'] = 14  # x轴刻度字号
-plt.rcParams['ytick.labelsize'] = 14  # y轴刻度字号
-plt.rcParams['legend.fontsize'] = 14  # 图例字号
+plt.rcParams["axes.unicode_minus"] = False
+plt.rcParams['axes.titlesize'] = 12  # 图标题字号
+plt.rcParams['axes.labelsize'] = 10  # x/y轴标签字号
+plt.rcParams['xtick.labelsize'] = 10  # x轴刻度字号
+plt.rcParams['ytick.labelsize'] = 10  # y轴刻度字号
+plt.rcParams['legend.fontsize'] = 10  # 图例字号
 
 
 def aggregate_features(window):
@@ -216,7 +217,7 @@ if __name__ == '__main__':
             patient_select = st.selectbox("选择一个患者查看趋势图", unique_ids)
             df_patient = df_raw[df_raw["序号"] == patient_select].sort_values("入院天数")
 
-            fig1, ax1 = plt.subplots(figsize=(4, 3))
+            fig1, ax1 = plt.subplots(figsize=(2, 2))
             for feat in selected_features:
                 if feat in df_patient.columns:
                     ax1.plot(df_patient["入院天数"], df_patient[feat], marker="o", label=feat)
@@ -254,7 +255,7 @@ if __name__ == '__main__':
                     if len(filtered_features) == 0:
                         st.warning("⚠️ 无法绘图：两个患者在这些特征上都缺失数据。")
                     else:
-                        fig2, ax2 = plt.subplots(figsize=(4, 3))
+                        fig2, ax2 = plt.subplots(figsize=(2, 2))
                         x = np.arange(len(filtered_features))
                         width = 0.35
                         ax2.bar(x - width / 2, mean1.values, width, label=f"患者 {patient_a}")
