@@ -164,7 +164,7 @@ if __name__ == '__main__':
         st.session_state.processor = None
     
     set_custom_style()
-    st.set_page_config(layout="centered")
+    
     col1, col2, col3 = st.columns([2, 2, 2])
 
     # ==================== col1：上传与预处理 ====================
