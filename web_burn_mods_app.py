@@ -13,10 +13,10 @@ st.set_page_config(layout="wide")
 plt.rcParams["font.sans-serif"] = ["SimHei", "Times New Roman"]
 plt.rcParams["axes.unicode_minus"] = False
 plt.rcParams['axes.titlesize'] = 12  # 图标题字号
-plt.rcParams['axes.labelsize'] = 10  # x/y轴标签字号
-plt.rcParams['xtick.labelsize'] = 10  # x轴刻度字号
-plt.rcParams['ytick.labelsize'] = 10  # y轴刻度字号
-plt.rcParams['legend.fontsize'] = 10  # 图例字号
+plt.rcParams['axes.labelsize'] = 6  # x/y轴标签字号
+plt.rcParams['xtick.labelsize'] = 6  # x轴刻度字号
+plt.rcParams['ytick.labelsize'] = 6  # y轴刻度字号
+plt.rcParams['legend.fontsize'] = 6  # 图例字号
 
 
 def aggregate_features(window):
@@ -217,14 +217,14 @@ if __name__ == '__main__':
             patient_select = st.selectbox("选择一个患者查看趋势图", unique_ids)
             df_patient = df_raw[df_raw["序号"] == patient_select].sort_values("入院天数")
 
-            fig1, ax1 = plt.subplots(figsize=(2, 2))
+            fig1, ax1 = plt.subplots(figsize=(3, 3))
             for feat in selected_features:
                 if feat in df_patient.columns:
                     ax1.plot(df_patient["入院天数"], df_patient[feat], marker="o", label=feat)
             ax1.set_title(f"患者 {patient_select} 特征趋势图")
             ax1.set_xlabel("入院天数")
             ax1.set_ylabel("数值")
-            ax1.legend(loc='center left', bbox_to_anchor=(1.02, 0.5), fontsize=7, framealpha=0.5)
+            ax1.legend(loc='center left', bbox_to_anchor=(1.02, 0.5), fontsize=4, framealpha=0.5)
             ax1.grid(True)
             st.pyplot(fig1)
 
@@ -261,9 +261,9 @@ if __name__ == '__main__':
                         ax2.bar(x - width / 2, mean1.values, width, label=f"患者 {patient_a}")
                         ax2.bar(x + width / 2, mean2.values, width, label=f"患者 {patient_b}")
                         ax2.set_xticks(x)
-                        ax2.set_xticklabels(filtered_features, rotation=45, fontsize=7)  # ✅ 缩小横坐标字体
-                        ax2.set_ylabel("平均值", fontsize=7)  # ✅ 缩小坐标轴标题
-                        ax2.set_title("关键特征平均值对比", fontsize=7)
+                        ax2.set_xticklabels(filtered_features, rotation=45, fontsize=4)  # ✅ 缩小横坐标字体
+                        ax2.set_ylabel("平均值", fontsize=4)  # ✅ 缩小坐标轴标题
+                        ax2.set_title("关键特征平均值对比", fontsize=4)
                         ax2.legend()
                         ax2.grid(True)
                         st.pyplot(fig2)
