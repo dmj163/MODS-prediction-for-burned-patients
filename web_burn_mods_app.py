@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import xgboost as xgb
 
 st.set_page_config(layout="wide")
-plt.rcParams["font.sans-serif"] = ["SimHei"]
 plt.rcParams["font.family"] = "SimHei"
 plt.rcParams["axes.unicode_minus"] = False
 plt.rcParams['axes.titlesize'] = 12  # 图标题字号
