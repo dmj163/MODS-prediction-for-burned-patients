@@ -128,6 +128,24 @@ def load_models(model_dir, input_dim):
 
     return xgb_model, lstm, gru
 
+def set_custom_style():
+    custom_css = """
+    <style>
+        h1 { font-size: 20px !important; }
+        h2 { font-size: 18px !important; }
+        h3 { font-size: 16px !important; }
+        p, label, div.stMarkdown, div.stTextInput > label, div.stNumberInput > label {
+            font-size: 14px !important;
+        }
+        button, input, textarea, select {
+            font-size: 14px !important;
+        }
+        table.dataframe th, table.dataframe td {
+            font-size: 12px !important;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
 
 if __name__ == '__main__':
     if 'processing_done' not in st.session_state:
@@ -144,8 +162,10 @@ if __name__ == '__main__':
         st.session_state.patient_ids = None
     if 'processor' not in st.session_state:
         st.session_state.processor = None
-
-    col1, col2, col3 = st.columns([3, 3, 3])
+    
+    set_custom_style()
+    st.set_page_config(layout="centered")
+    col1, col2, col3 = st.columns([2, 2, 2])
 
     # ==================== col1：上传与预处理 ====================
     with col1:
